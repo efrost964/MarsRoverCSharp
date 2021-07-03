@@ -15,6 +15,32 @@ namespace MarsRover
         }
         public void RecieveMessage(Message message)
         {
+            Exception lowPower = new Exception("Rover cannot move in LOW_POWER mode");
+            foreach(Command command in message.Commands)
+            {
+                if(command.CommandType == "MOVE")
+                {
+                    if (Mode == "NORMAL") 
+                    {
+                        Position = command.NewPostion; 
+                    }
+                    else
+                    {
+                        
+                        //throw new Exception("Rover cannot move in LOW_POWER mode");                        
+                        Console.WriteLine("Rover cannot move in LOW_POWER mode.");
+                    }
+                }
+                else if(command.CommandType == "MODE_CHANGE")
+                {
+                    Mode = command.NewMode;
+                }
+                else
+                {
+                    //throw new System.ArgumentException("Please input a valid command");
+                    Console.WriteLine("Please input a valid command.");
+                }
+            }
 
         }
         
