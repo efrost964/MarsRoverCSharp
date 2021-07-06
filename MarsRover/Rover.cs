@@ -27,8 +27,8 @@ namespace MarsRover
                     else
                     {
                         
-                        //throw new Exception("Rover cannot move in LOW_POWER mode");                        
-                        Console.WriteLine("Rover cannot move in LOW_POWER mode.");
+                        throw new Exception("Rover cannot move in LOW_POWER mode");                        
+                        //Console.WriteLine("Rover cannot move in LOW_POWER mode.");
                     }
                 }
                 else if(command.CommandType == "MODE_CHANGE")

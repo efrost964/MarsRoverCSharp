@@ -44,13 +44,14 @@ namespace MarsRoverTests
             Assert.AreEqual("LOW_POWER", test_rover.Mode);
         }
         [TestMethod]
+        [ExpectedException(typeof(System.Exception))]
         public void DoesNotMoveInLOW_POWER()
         {
             commands = new Command[] { modeCommand, moveCommand };
             message = new Message("SHOOT", commands);
             test_rover.RecieveMessage(message);
-            Assert.AreEqual(5000, test_rover.Position);
-            //Assert.Fail("Rover cannot move in LOW_POWER mode.");
+            //Assert.AreEqual(5000, test_rover.Position);
+            Assert.Fail("Rover cannot move in LOW_POWER mode.");
         }
         [TestMethod]
         public void RoverPositionChangesMoveCommand()
